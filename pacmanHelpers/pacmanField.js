@@ -19,7 +19,7 @@ let field_structure = [
     [w, w, w, w, f, w, w, w, f, w, f, w, w, w, f, w, w, w, w],
     [n, n, n, w, f, w, f, f, f, f, f, f, f, w, f, w, n, n, n],
     [w, w, w, w, f, w, f, w, w, f, w, w, f, w, f, w, w, w, w],
-    [p, f, f, f, f, f, f, w, sp, sp, sp, w, f, f, f, f, f, f, p],
+   [p, f, f, f, f, f, f, w, sp, sp, sp, w, f, f, f, f, f, f, p],
     [w, w, w, w, f, w, f, w, w, w, w, w, f, w, f, w, w, w, w],
     [n, n, n, w, f, w, f, f, f, f, f, f, f, w, f, w, n, n, n],
     [w, w, w, w, f, w, f, w, w, w, w, w, f, w, f, w, w, w, w],

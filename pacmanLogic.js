@@ -39,6 +39,7 @@ let superMode = false;
 let interval = null;
 let paused = false
 let speedCopy = null
+let counter;
 let counterCopy = null
 
 let remainingLives = null

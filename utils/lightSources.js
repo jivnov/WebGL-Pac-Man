@@ -57,7 +57,7 @@ function LightSource( ) {
 
 LightSource.prototype.isOff = function() {
     
-    return this.isOn == false;
+    return this.isOn === false;
 }
 
 LightSource.prototype.switchOn = function() {
@@ -72,7 +72,7 @@ LightSource.prototype.switchOff = function() {
 
 LightSource.prototype.isDirectional = function() {
     
-    return this.position[3] == 0.0;
+    return this.position[3] === 0.0;
 }
 
 LightSource.prototype.getPosition = function() {
@@ -159,42 +159,51 @@ LightSource.prototype.setRotationSpeed = function( s ) {
 //  Instantiating light sources
 //
 
-var lightSources = [];
+let lightSources = [];
 
 // Yellow light (Sun)
-var sunLight = new LightSource();
+let sunLight = new LightSource();
 sunLight.setPosition( 0.0, 5.0, -1.0, 0.0 );
 sunLight.setIntensity( 1.0, 1.0, 0.0 );
 sunLight.setAmbIntensity( 0.8, 0.8, 0.0 );
 lightSources.push(sunLight);
 
 // Yellow light (Sun)
-var sunLight1 = new LightSource();
+let sunLight1 = new LightSource();
 sunLight1.setPosition( 0.0, 5.0, 2.0, 0.0 );
 sunLight1.setIntensity( 1.0, 1.0, 0.0 );
 sunLight1.setAmbIntensity( 0.8, 0.8, 0.0 );
 lightSources.push(sunLight1);
 
+// Super mode light (Red)
+let superModeLightRed = new LightSource();
+superModeLightRed.setPosition( 0.0, 5.0, 0.0, 0.0 );
+superModeLightRed.setIntensity( 1.0, 0.0, 0.0 );
+superModeLightRed.setAmbIntensity( 0.8, 0.0, 0.0 );
+
+// Super mode light (Green)
+let superModeLightGreen = new LightSource();
+superModeLightGreen.setPosition( 0.0, 5.0, 0.0, 0.0 );
+superModeLightGreen.setIntensity( 0.0, 1.0, 0.0 );
+superModeLightGreen.setAmbIntensity( 0.0, 0.8, 0.0 );
+superModeLightGreen.switchRotZZOn();
+superModeLightGreen.setRotationSpeed(2.0);
+
 // Super mode light (Blue)
-var superModeLightBlue = new LightSource();
+let superModeLightBlue = new LightSource();
 superModeLightBlue.setPosition( 0.0, 5.0, 0.0, 0.0 );
 superModeLightBlue.setIntensity( 0.0, 0.0, 1.0 );
 superModeLightBlue.setAmbIntensity( 0.0, 0.0, 0.8 );
 superModeLightBlue.switchRotZZOn();
 superModeLightBlue.setRotationSpeed(4.0);
 
-// Super mode light (Red)
-var superModeLightRed = new LightSource();
-superModeLightRed.setPosition( 0.0, 5.0, 0.0, 0.0 );
-superModeLightRed.setIntensity( 1.0, 0.0, 0.0 );
-superModeLightRed.setAmbIntensity( 0.8, 0.0, 0.0 );
-
 function switchSuperModeLight(enable) {
 
     if (enable) {
         // Enable super mode lights
         lightSources[0] = superModeLightRed;
-        lightSources[1] = superModeLightBlue;
+        lightSources[1] = superModeLightGreen;
+        lightSources[2] = superModeLightBlue;
     } else {
         // Disable super mode lights
         lightSources = [];
@@ -202,3 +211,29 @@ function switchSuperModeLight(enable) {
         lightSources.push(sunLight1);
     }
 }
+
+/*
+// Super mode light (Red)
+let superModeLightRed = new LightSource();
+superModeLightRed.setPosition( 0.0, 5.0, 0.0, 0.0 );
+superModeLightRed.setIntensity( 1.0, 0.0, 0.0 );
+superModeLightRed.setAmbIntensity( 0.8, 0.0, 0.0 );
+superModeLightRed.switchRotZZOn();
+superModeLightRed.setRotationSpeed(4.0);
+
+// Super mode light (Green)
+let superModeLightGreen = new LightSource();
+superModeLightGreen.setPosition( 0.0, 5.0, 0.0, 0.0 );
+superModeLightGreen.setIntensity( 0.0, 1.0, 0.0 );
+superModeLightGreen.setAmbIntensity( 0.0, 0.8, 0.0 );
+superModeLightGreen.switchRotZZOn();
+superModeLightGreen.setRotationSpeed(4.0);
+
+// Super mode light (Blue)
+let superModeLightBlue = new LightSource();
+superModeLightBlue.setPosition( 0.0, 5.0, 0.0, 0.0 );
+superModeLightBlue.setIntensity( 0.0, 0.0, 1.0 );
+superModeLightBlue.setAmbIntensity( 0.0, 0.0, 0.8 );
+superModeLightBlue.switchRotZZOn();
+superModeLightBlue.setRotationSpeed(4.0);
+* */

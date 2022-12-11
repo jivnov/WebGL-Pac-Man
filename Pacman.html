@@ -55,55 +55,36 @@
 <script id="shader-vs" type="x-shader/x-vertex">
 
     attribute vec3 aVertexPosition;
-
     attribute vec2 aTextureCoord;
-
     uniform mat4 uMVMatrix;
-
     uniform mat4 uPMatrix;
-
     varying vec2 vTextureCoord;
-
     varying vec4 fColor;
 
     // For the Phong Illumination Model
-
     attribute vec3 vNormal;
-
     uniform vec4 viewerPosition;
 
     // Array of lights
-
     #define MAX_LIGHTS 5
-
     uniform int numLights;
-
     uniform struct Light {
 
         vec4 position;
-
         mat4 lightSourceMatrix;
-
         vec3 intensities;
-
         vec3 ambientIntensities;
 
     } allLights[MAX_LIGHTS];
 
     // The material properties
-
     uniform vec3 k_ambient;
-
     uniform vec3 k_diffuse;
-
     uniform vec3 k_specular;
-
     uniform float shininess;
 
     // Spotlight properties
-
     uniform int difficulty;
-
     uniform float threshold;
 
 
@@ -224,18 +205,19 @@
 
 <script id="shader-fs" type="x-shader/x-fragment">
 
+    // Set precision to medium
     precision mediump float;
 
+    // Varying variables
     varying vec2 vTextureCoord;
-
     varying vec4 fColor;
 
+    // Texture sampler
     uniform sampler2D uSampler;
 
     void main(void) {
-
-        // Using the passed vertex color * texture
-
+        // Set fragment color to the color calculated in the vertex shader,
+        // multiplied by the texture color
         gl_FragColor = fColor * texture2D(uSampler, vec2(vTextureCoord.s, vTextureCoord.t));
     }
 

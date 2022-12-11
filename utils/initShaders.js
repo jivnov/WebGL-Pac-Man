@@ -2,7 +2,7 @@
 //
 //  initShaders.js
 //
-//    Getting, compiling and linking the vertex and the fragment shaders
+//  Getting, compiling and linking the vertex and the fragment shaders
 //
 //  J. Madeira - October 2015
 //
@@ -12,24 +12,24 @@
 // Getting and compiling a shader
 
 function getShader(gl, id) {
-    var shaderScript = document.getElementById(id);
+    let shaderScript = document.getElementById(id);
     if (!shaderScript) {
         return null;
     }
 
-    var str = "";
-    var k = shaderScript.firstChild;
+    let str = "";
+    let k = shaderScript.firstChild;
     while (k) {
-        if (k.nodeType == 3) {
+        if (k.nodeType === 3) {
             str += k.textContent;
         }
         k = k.nextSibling;
     }
 
-    var shader;
-    if (shaderScript.type == "x-shader/x-fragment") {
+    let shader;
+    if (shaderScript.type === "x-shader/x-fragment") {
         shader = gl.createShader(gl.FRAGMENT_SHADER);
-    } else if (shaderScript.type == "x-shader/x-vertex") {
+    } else if (shaderScript.type === "x-shader/x-vertex") {
         shader = gl.createShader(gl.VERTEX_SHADER);
     } else {
         return null;
@@ -51,10 +51,10 @@ function getShader(gl, id) {
 // Initializing the shader program
 
 function initShaders(gl) {
-    var fragmentShader = getShader(gl, "shader-fs");
-    var vertexShader = getShader(gl, "shader-vs");
+    let fragmentShader = getShader(gl, "shader-fs");
+    let vertexShader = getShader(gl, "shader-vs");
 
-    var shaderProgram = gl.createProgram();
+    let shaderProgram = gl.createProgram();
     gl.attachShader(shaderProgram, vertexShader);
     gl.attachShader(shaderProgram, fragmentShader);
     gl.linkProgram(shaderProgram);
@@ -82,12 +82,13 @@ function initShaders(gl) {
 
     // The sampler
 
-    shaderProgram.samplerUniform = gl.getUniformLocation(shaderProgram, "uSampler");
-
-    // Vertex Normals
-
     shaderProgram.vertexNormalAttribute = gl.getAttribLocation(shaderProgram, "vNormal");
     gl.enableVertexAttribArray(shaderProgram.vertexNormalAttribute);
+
+    // Colors
+
+    shaderProgram.vertexColorAttribute = gl.getAttribLocation(shaderProgram, "aVertexColor");
+    gl.enableVertexAttribArray(shaderProgram.vertexColorAttribute);
 
     return shaderProgram;
 }
