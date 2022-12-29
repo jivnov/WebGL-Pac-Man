@@ -185,48 +185,25 @@ function handleLoadedTexture(texture) {
 function initTextures() {
 
     // Wall texture
-    wallTexture = gl.createTexture();
-    wallTexture.image = new Image();
-    wallTexture.image.onload = function () {
-        handleLoadedTexture(wallTexture)
-    }
-
-    wallTexture.image.src = "assets/bounds.jpg";
+    wallTexture = createTextureWithAsset("assets/bounds.jpg")
 
     // Food texture
-    foodTexture = gl.createTexture();
-    foodTexture.image = new Image();
-    foodTexture.image.onload = function () {
-        handleLoadedTexture(foodTexture)
-    }
-
-    foodTexture.image.src = "assets/food.png";
+    foodTexture = createTextureWithAsset("assets/food.png")
 
     // Super food texture
-    superFoodTexture = gl.createTexture();
-    superFoodTexture.image = new Image();
-    superFoodTexture.image.onload = function () {
-        handleLoadedTexture(superFoodTexture)
-    }
-
-    superFoodTexture.image.src = "assets/super-food.png";
+    superFoodTexture = createTextureWithAsset("assets/super-food.png")
 
     // Pacman texture
-    pacmanTexture = gl.createTexture();
-    pacmanTexture.image = new Image();
-    pacmanTexture.image.onload = function () {
-        handleLoadedTexture(pacmanTexture)
-    }
+    pacmanTexture = createTextureWithAsset("assets/pacman.png")
 
-    pacmanTexture.image.src = "assets/pacman.png";
-
-    ghost1Texture = createGhostTexture("assets/ghosts/gh1.png")
-    ghost2Texture = createGhostTexture("assets/ghosts/gh2.png")
-    ghost3Texture = createGhostTexture("assets/ghosts/gh3.png")
-    ghost4Texture = createGhostTexture("assets/ghosts/gh4.png")
+    // Ghosts textures
+    ghost1Texture = createTextureWithAsset("assets/ghosts/gh1.png")
+    ghost2Texture = createTextureWithAsset("assets/ghosts/gh2.png")
+    ghost3Texture = createTextureWithAsset("assets/ghosts/gh3.png")
+    ghost4Texture = createTextureWithAsset("assets/ghosts/gh4.png")
 }
 
-function createGhostTexture(asset) {
+function createTextureWithAsset(asset) {
     let texture = gl.createTexture();
     texture.image = new Image();
     texture.image.onload = function () {

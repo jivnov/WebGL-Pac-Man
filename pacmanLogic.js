@@ -2,6 +2,7 @@
 let gl = null;
 let shaderProgram = null;
 let cubeVertexPositionBuffer = null;
+let cubeVertexTextureCoordBuffer = null;
 let cubeVertexIndexBuffer = null;
 let cubeVertexNormalBuffer = null;
 
@@ -92,8 +93,8 @@ function initField() {
     pacman.currentBlock.type = '';
 
     // Create ghosts and render them in random positions
-    for (let i = 0; i < 4; i++) {
-        const ghost = new CharacterConstructor(`G${i + 1}`);
+    for (let i = 1; i <= 4; i++) {
+        const ghost = new CharacterConstructor(`G${i}`);
         const coords = randomCoordinatesGhost();
         ghost.init(coords['x'], coords['z']);
         ghosts.push(ghost);

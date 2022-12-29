@@ -14,14 +14,13 @@
 }
 
 .welcome-screen {
+    font-family: TSCu_Comic, sans-serif;
     display: block;
-    color: white;
+    color: #dbb4ff;
     width: 80%;
     height: 80%;
-    border-style: solid;
-    border-width: thin;
-    border-radius: 30%;
     margin: 0 auto;
+    text-align: center;
 }
 
 .welcome-spawn {
@@ -46,22 +45,22 @@
     height: 80%;
 }
 
-.score, .remainingLives {
-    color: yellow;
+.remainingLives {
+    color: #ff0000;
     width: auto;
     height: 5%;
     font-size: 100%;
 }
 
 .super-mode {
-    color: red;
+    color: #0000ff;
     width: auto;
     height: 5%;
     font-size: 100%;
 }
 
-.result {
-    color: yellow;
+.result, .score {
+    color: #ffff00;
     width: auto;
     height: 5%;
     font-size: 100%;

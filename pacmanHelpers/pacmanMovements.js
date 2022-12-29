@@ -261,8 +261,8 @@ function spawnInRandomPortal(character) {
 function reduceLivesAndRespawn() {
     remainingLives--;
     ghosts = [];
-    for (let i = 0; i < 4; i++) {
-        const ghost = new CharacterConstructor(`G${i + 1}`);
+    for (let i = 1; i <= 4; i++) {
+        const ghost = new CharacterConstructor(`G${i}`);
         const coords = randomCoordinatesGhost();
         ghost.init(coords['x'], coords['z']);
         ghosts.push(ghost);
